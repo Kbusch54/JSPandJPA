@@ -20,6 +20,14 @@ public class DepartmentService extends AbstractService {
 		em.getTransaction().commit();
 		return d1;
 	}
+	public static Department makeNewDepartment(String name, String state) {
+		Department d1 = new Department(name,state);
+		em.getTransaction().begin();
+		em.persist(d1);
+		em.getTransaction().commit();
+		return d1;
+		
+	}
 
 	@SuppressWarnings("unchecked")
 	public static void searchDeptByState(String state) {

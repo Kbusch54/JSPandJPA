@@ -31,6 +31,7 @@ public class MyFirstServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
+		System.out.println("hello from marz");
 		//pulling form form in form.jsp 
 		String bob = request.getParameter("name");
 		String jim = request.getParameter("state");
@@ -50,7 +51,16 @@ public class MyFirstServlet extends HttpServlet {
 			rd.forward(request, response);	
 		}
 		
+		RequestDispatcher rq = getServletContext().getRequestDispatcher("/FirstmodelServlet");
+		rq.include(request, response);
 		
+		if((boolean)request.getAttribute("createNewDept")) {
+			rq = getServletContext().getRequestDispatcher("/index.jsp");
+			rq.forward(request, response);
+		}else {
+			rq = getServletContext().getRequestDispatcher("/invalidLogin.jsp");
+			rq.forward(request, response);
+		}
 
 		/*
 		 * PrintWriter reWriter = response.getWriter();

@@ -17,6 +17,7 @@ import javax.persistence.NamedQuery;
  * @author CTStudent
  *
  */
+
 @Entity
 @NamedQueries(value = {
 		@NamedQuery(query = "SELECT d FROM Department d WHERE d.state = :state", name = "Find by State"),
@@ -49,6 +50,11 @@ public class Department implements Serializable {
 	public Department(int deptId, String name, String state) {
 		super();
 		this.deptId = deptId;
+		this.name = name;
+		this.state = state;
+	}
+	public Department( String name, String state) {
+		super();
 		this.name = name;
 		this.state = state;
 	}

@@ -3,7 +3,10 @@
  */
 package org.perscholas.drivers;
 
+import java.util.List;
+
 import org.perscholas.models.AbstractService;
+import org.perscholas.models.Department;
 import org.perscholas.models.DepartmentService;
 import org.perscholas.models.EmployeeService;
 import org.perscholas.models.TeacherService;
@@ -30,9 +33,14 @@ public class JpaExerciser {
 	}
 	public void showAll() {
 		EmployeeService.showAllEmployee();
-		DepartmentService.showAllDepart();
+//		DepartmentService.showAllDepart();
+		List<Department> dep =DepartmentService.showAllDepartList();
+		for (Department department : dep) {
+			System.out.println(department);
+		}
 		TeacherService ts = new TeacherService();
 		ts.showAllTeachers();
+		
 	}
 	public void showPeepsById(int id) {
 		TeacherService ts = new TeacherService();
